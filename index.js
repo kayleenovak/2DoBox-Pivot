@@ -27,7 +27,7 @@ function cardObject() {
 $.each(localStorage, function(key) {
     var cardData = JSON.parse(this);
     numCards++;
-    $( ".bottom-box" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
+    $( ".card-prepend" ).prepend(newCard(key, cardData.title, cardData.body, cardData.quality));
 });
 
 var localStoreCard = function() {

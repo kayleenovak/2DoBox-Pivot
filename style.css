@@ -1,19 +1,10 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Roboto Slab', serif;
-}
-
-.container-box {
-    margin: 0;
-}
 
 body {
     box-sizing: border-box;
     margin: 0;
 }
 
-.top-box {
+.container-box {
     background-color: #e5f3f2;
     box-sizing: border-box;
     height: 300px;
@@ -23,7 +14,6 @@ body {
 
 h1{
     color: #6d6e71;
-    display: inline-block;
     font-size: 275%;
     margin-bottom:  30px;
 }
@@ -32,7 +22,23 @@ h1{
     color: #00a79d;
 }
 
-#title-input {
+.second-word {
+
+}
+
+.input-section {
+
+}
+
+input {
+    align-items: center;
+    display: flex;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 100%;
+    justify-content: space-between;
+    margin: auto;
+}
+.title-input {
     align-items: center;
     display: flex;
     height: 30px;
@@ -40,18 +46,16 @@ h1{
     width: 45%;
 }
 
-#body-input {
+.body-input {
     align-items: center;
     display: flex;
     height: 30px;
     justify-content: space-between;
     width: 45%;
 }
-
-#search-input {
-    height: 30px;
-    margin-top: 50px;
-    width: 45%;
+button {
+    background-color: transparent;
+    border: none;
 }
 
 .save-btn {
@@ -66,14 +70,14 @@ h1{
 .save-btn:hover {
     background-color: #045e55;
 }
+.search-input {
+    height: 30px;
+    margin-top: 50px;
+    width: 45%;
+}
 
-input {
-    align-items: center;
-    display: flex;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
-    justify-content: space-between;
-    margin: auto;
+.card-prepend{
+    
 }
 
 .card-container {
@@ -82,11 +86,11 @@ input {
     width: 45%;
 }
 
-.card {
-    background-color: #ffffff;
-    height: auto;
-    margin: auto;
-    width: 45%;
+h2 {
+   color: #6d6e71; 
+   display: inline-block;
+   font-family: 'Roboto Slab', serif;
+   font-size: 150%;
 }
 
 .title-of-card{
@@ -96,12 +100,23 @@ input {
     font-size: 140%;
 }
 
-h2 {
-   color: #6d6e71; 
-   display: inline-block;
-   font-family: 'Roboto Slab', serif;
-   font-size: 150%;
+.delete-button {
+    background-image: url(./images/delete.svg);
+    background-size: cover;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    width: 20px;
 }
+
+.delete-button:hover {
+    background-image: url(./images/delete-hover.svg);
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+}
+
 
 p {
     color: #939598;
@@ -112,11 +127,6 @@ p {
     color: #939598;
     font-family: 'Open Sans', sans-serif;
     font-size: 100%;
-}
-
-button {
-    background-color: transparent;
-    border: none;
 }
 
 .upvote {
@@ -150,22 +160,6 @@ button {
     width: 20px;
 }
 
-.delete-button {
-    background-image: url(./images/delete.svg);
-    background-size: cover;
-    height: 20px;
-    position: absolute;
-    right: 10px;
-    top: 15px;
-    width: 20px;
-}
-
-.delete-button:hover {
-    background-image: url(./images/delete-hover.svg);
-    background-size: cover;
-    height: 20px;
-    width: 20px;
-}
 
 @media(max-width: 640px){
 
@@ -173,7 +167,7 @@ button {
         width: 85%;
     }
 
-    #search-input {
+    .search-input {
         border: solid #999 1px;
     }
 }
