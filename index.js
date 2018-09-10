@@ -5,12 +5,16 @@ $('.save-btn').on('click', createIdea);
 
 function newCard(id, title, body, quality){
  return `<article class="card-container" id='${id}'>
-            <h2 class="title-of-card">${title}</h2>
-            <button class="delete-button"></button>
-            <pclass="body-of-card">${body}</p>
-            <button class="upvote"></button>
-            <button class="downvote"></button>
-            <p class="quality">quality: ${quality}</p>
+            <div class="card-heading">
+                <h2 class="title-of-card">${title}</h2>
+                <button class="delete-button"></button>
+            </div>
+                <p class="body-of-card">${body}</p>
+            <div class="idea-body">
+                <button class="upvote"></button>
+                <button class="downvote"></button>
+                <p class="quality">quality: ${quality}</p>
+            </div>
           </article>`
 }
 
@@ -18,7 +22,7 @@ function NewIdea(title, body) {
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
-    this.id = $.now();
+    this.id = Date.now();
 };
 
 function createIdea(event) {
@@ -35,8 +39,9 @@ function localStoreCard(newIdea) {
 
 $.each(localStorage, function(key) {
     var retrieveIdea = localStorage.getItem(key);
-    var cardData = JSON.parse(retrieveIdea);
-   $( ".card-prepend" ).prepend(newCard(cardData.id, cardData.title, cardData.body, cardData.quality));
+    var parsedIdea = JSON.parse(retrieveIdea);
+    console.log(parsedIdea.id);
+   $( ".card-prepend" ).prepend(newCard(parsedIdea.id, parsedIdea.title, parsedIdea.body, parsedIdea.quality));
 });
 
 $(".card-prepend").on('click', function(event){
