@@ -14,6 +14,7 @@ function newCard(id, title, body, importance){
                 <button class="upvote"></button>
                 <button class="downvote"></button>
                 <p class="importance">importance: ${importance}</p>
+                <button class="complete-btn">Completed</button> 
             </div>
           </article>`
 }
@@ -24,6 +25,7 @@ function NewIdea(title, body) {
     this.importance = 'Normal';
     this.id = Date.now();
     this.index = 2;
+    this.complete = false;
 };
 
 function createIdea(event) {
@@ -43,6 +45,9 @@ function onLoad() {
     var parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
     var html = newCard(parsedIdea.id, parsedIdea.title, parsedIdea.body, parsedIdea.importance);
     $('.card-prepend').prepend(html);
+    if (parsedIdea.complete === true) {
+        $('.card-container').addClass('card-container-complete');
+    }
   }
 }
 
@@ -52,12 +57,30 @@ $('.card-prepend').on('click', delegateClick);
 
 function delegateClick() {
     if (event.target.classList.contains('upvote')) {
-        upvote(event)
+        upvote(event);
     } else if (event.target.classList.contains('downvote')) {
-        downvote(event)
+        downvote(event);
     } else if (event.target.classList.contains('delete-button')) {
-        deleteStuff(event)
+        deleteStuff(event);
+    } else if (event.target.classList.contains('complete-btn')) {
+        completeIdea(event);
     }
+}
+
+function completeIdea(event) {
+    event.target.parentNode.parentNode.classList.toggle('card-container-complete');
+    toggleComplete(event);
+}
+
+function toggleComplete(event) {
+    var id = $(event.target).parent().parent().attr('id');
+    var parsedIdea = JSON.parse(localStorage.getItem(id));
+    if (event.target.parentNode.parentNode.classList.contains('card-container-complete')) {
+        parsedIdea.complete = true;
+    } else  {
+        parsedIdea.complete = false;
+    }
+    localStoreCard(parsedIdea);
 }
 
 
