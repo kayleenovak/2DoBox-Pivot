@@ -1,15 +1,14 @@
-
-onLoad()
+onLoad();
 
 $('.save-btn').on('click', createIdea);
 
 function newCard(id, title, body, importance){
  return `<article class="card-container" id='${id}'>
             <div class="card-heading">
-                <h2 class="title-of-card">${title}</h2>
+                <h2 class="title-of-card" contenteditable>${title}</h2>
                 <button class="delete-button"></button>
             </div>
-                <p class="body-of-card">${body}</p>
+                <p class="body-of-card" contenteditable>${body}</p>
             <div class="idea-body">
                 <button class="upvote"></button>
                 <button class="downvote"></button>
@@ -33,6 +32,7 @@ function createIdea(event) {
     var newIdea = new NewIdea($('.title-input').val(), $('.body-input').val());
     localStoreCard(newIdea);
     $('.card-prepend').prepend(newCard(newIdea.id, newIdea.title, newIdea.body, newIdea.importance));
+    toggleCards();
 }
 
 function localStoreCard(newIdea) {
@@ -51,7 +51,20 @@ function onLoad() {
   }
 }
 
-
+// function loadItems() {
+//     if (localStorage.length < 10) {
+//         onLoad();
+//     } else if (localStorage.length > 9) {
+//     for (var i = 0; i < 10; i++) {
+//     var parsedIdea = JSON.parse(localStorage.getItem(localStorage.key(i)));
+//     var html = newCard(parsedIdea.id, parsedIdea.title, parsedIdea.body, parsedIdea.importance);
+//     $('.card-prepend').prepend(html);
+//     if (parsedIdea.complete === true) {
+//         $('.card-container').addClass('card-container-complete');
+//     }
+//   }
+//     }
+// }
 
 $('.card-prepend').on('click', delegateClick);
 
@@ -121,10 +134,52 @@ function search() {
  var searchValue = $(this).val().toLowerCase();
  $(".card-container").filter(function() {
    $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1)
+ console.log(this);
  });
 }
 
-      
+function toggleCards() {
+    $('.card-container').toggle()
+}
+
+function editIdea(event) {
+  event.preventDefault();
+  if ($(event.target).hasClass('title-of-card')) {
+  var id = $(event.target).parent().parent().attr('id');
+  var parsedIdea = JSON.parse(localStorage.getItem(id));
+  var changeTitle = event.target.innerText;
+  parsedIdea.title = changeTitle;
+  localStoreCard(parsedIdea);
+  }
+}
+
+function editBody(event) {
+  event.preventDefault();
+  if ($(event.target).hasClass('body-of-card')) {
+  var id = $(event.target).parent().attr('id');
+  var parsedIdea = JSON.parse(localStorage.getItem(id));
+  var changeBody = event.target.innerText;
+  parsedIdea.body = changeBody;
+  localStoreCard(parsedIdea);
+  } 
+}
+
+$('.card-prepend').on('focusout', editBody);
+$('.card-prepend').on('keyup', function (event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+    editBody(event);
+    $('.body-of-card').trigger('blur');
+  }
+});
+$('.card-prepend').on('focusout', editIdea);
+$('.card-prepend').on('keyup', function (event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+    editIdea(event);
+    $('.idea-of-card').trigger('blur');
+  }
+});
 
 
 

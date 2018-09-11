@@ -9,7 +9,7 @@ body {
 }
 
 .container-box {
-    background-color: #e5f3f2;
+    background-color: #DEE7D3;
     box-sizing: border-box;
     height: 230px;
     margin: 0;
@@ -17,7 +17,7 @@ body {
 }
 
 h1 {
-    color: #6d6e71;
+    color: #610f7f;
     font-size: 275%;
     margin-bottom: 20px;
     padding-top: 20px;
@@ -25,11 +25,11 @@ h1 {
 }
 
 .second-word {
-    color: #6D6E71;
+    color: darkgrey;
 }
 
 .idea {
-    color: #00a79d;
+    color: #818C74;
 }
 
 .input-section {
@@ -47,18 +47,15 @@ input {
     font-size: 100%;
 }
 
-.title-input {
-    height: 30px;
-    width: 45%;
-    margin-bottom: 10px;
-    max-width: 540px;
-}
-
+.title-input,
 .body-input {
     height: 30px;
     width: 45%;
     margin-bottom: 10px;
     max-width: 540px;
+    padding: 5px;
+}
+
 }
 
 .title-input::placeholder,
@@ -71,7 +68,7 @@ button {
 }
 
 .save-btn {
-    background-color: #00a79d;
+    background-color: #818C74;
     border: none;
     color: #fff;
     font-size: 120%;
@@ -95,10 +92,12 @@ button {
     margin: 20px 0 10px 0;
     width: 45%;
     max-width: 540px;
+    padding: 5px;
 }
 
 .card-prepend{
-    width: 45%
+    width: 45%;
+    max-width: 540px;
 }
 
 .card-container {
@@ -151,6 +150,7 @@ p {
 .idea-body {
     display: flex;
     align-items: center;
+    position: relative;
 }
 .upvote {
     background-image: url(./images/upvote.svg);
@@ -176,19 +176,38 @@ p {
     background-image: url(./images/downvote-hover.svg);
 }
 
+.importance {
+    font-size: 16px;
+}
+
 .quality {
     display: inline-block;
 }
 
+.complete-btn {
+    position: absolute;
+    right: 10px;
+    background-color: #DEE7D3;
+    border-radius: 10%; 
+}
 
-@media(max-width: 750px){
 
-    .card-container {
-        width: 85%;
-    }
+@media(max-width: 840px){
+    .title-input,
+.body-input {
+    width: 90%;
+}
 
-    .search-input {
-        border: solid #999 1px;
-    }
+.save-btn {
+    width: 90%;
+}
+
+.card-prepend{
+    width: 90%;
+}
+
+.importance {
+    font-size: 12px;
+}
 }
 
