@@ -9,23 +9,21 @@
 </head>
 
 <body>
-    <section class="container box">
-        <article class="top-box">
+    <section class="container-box">
+        <h1 class="idea">2Do<span class="second-word">Box</span></h1>
+        <article class="input-section">
             <form>
-                <h1 class="idea">idea</h1>
-                <h1 class="box">Box</h1>
-                <input id="title-input" type="text" placeholder="Title"><br />
-                <input id="body-input" type="text" placeholder="Body"><br />  
-                <button class="save-btn">save</button><br />
+                <input class="title-input" type="text" placeholder="Title">
+                <input class="body-input" type="text" placeholder="Task"> 
+                <button class="save-btn">save</button>
             </form>
         </article>
-        
-        <input id="search-input" type="text" placeholder="Search">
-
-        <article class="bottom-box"> </article>
-
     </section>
-
+    <section class="card-section">   
+        <input class="search-input" type="text" placeholder="Search">
+        <article class="card-prepend"> </article>
+    </section>
+  <!--   <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
     <script src="./jquery/jquery-3.2.1.js"></script>
     <script src="./index.js"></script>
 </body>
