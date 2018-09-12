@@ -6,6 +6,7 @@
 
 body {
     margin: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .container-box {
@@ -16,65 +17,46 @@ body {
     text-align: center;
 }
 
-h1 {
-    color: #610f7f;
+.to-do-heading {
+    color: #698473;
+    font-family: 'roboto slab', sans-serif;
     font-size: 275%;
     margin-bottom: 20px;
     padding-top: 20px;
-    font-family: 'roboto slab', sans-serif;
 }
 
 .second-word {
-    color: darkgrey;
+    color: #B7B7B7;
 }
 
-.idea {
-    color: #818C74;
-}
-
-.input-section {
-
-}
-
-form {
+.input-form {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-input {
+.input-format {
     font-family: 'Open Sans', sans-serif;
-    font-size: 100%;
-}
-
-.title-input,
-.body-input {
+    font-size: 17px;
     height: 30px;
-    width: 45%;
     margin-bottom: 10px;
     max-width: 540px;
     padding: 5px;
+    width: 45%;
 }
 
-}
-
-.title-input::placeholder,
-.body-input::placeholder {
+.input-format::placeholder {
     color: #939598;
-}
-button {
-    background-color: transparent;
-    border: none;
 }
 
 .save-btn {
-    background-color: #818C74;
+    background-color: #698473;
     border: none;
     color: #fff;
-    font-size: 120%;
+    font-size: 19px;
     height: 30px;
-    width: 45%;
     max-width: 540px;
+    width: 45%;
 }
 
 .save-btn:hover {
@@ -82,38 +64,30 @@ button {
 }
 
 .card-section {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .search-input {
-    height: 30px;
-    margin: 20px 0 10px 0;
-    width: 45%;
-    max-width: 540px;
-    padding: 5px;
+    margin-top: 20px;
 }
 
 .card-prepend{
-    width: 45%;
     max-width: 540px;
+    width: 45%;
 }
 
 .card-container {
-    margin-top: 20px;
     border-bottom: 1px solid #D1D3D4;
+    margin-top: 20px;
 }
 
-.card-container-complete {
-    background: grey;
-    color: lightgrey;
-}
 
 .card-heading {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .title-of-card{
@@ -134,30 +108,39 @@ button {
     background-image: url(./images/delete-hover.svg);
 }
 
-
-p {
-    color: #939598;
-    font-family: 'Open Sans', sans-serif;
+.card-container-complete {
+    background: #FBF9EC;
+    color: darkgrey;
+    border: 3px solid #FBF9EC;
 }
 
-.body-of-card{
+
+.body-of-card   {
     color: #939598;
-    font-family: 'Open Sans', sans-serif;
     font-size: 100%;
     word-break: break-all;
 }
 
+.importance {
+    color: #939598;
+    font-size: 16px;
+}
+
 .idea-body {
-    display: flex;
     align-items: center;
+    display: flex;
     position: relative;
 }
-.upvote {
-    background-image: url(./images/upvote.svg);
+
+.upvote,
+.downvote {
     background-size: cover;
     height: 25px;
     margin: 15px 10px 15px 0;
     width: 25px;
+}
+.upvote {
+    background-image: url(./images/upvote.svg);
 }
 
 .upvote:hover {
@@ -166,43 +149,23 @@ p {
 
 .downvote {
     background-image: url(./images/downvote.svg);
-    background-size: cover;
-    height: 25px;
-    margin: 15px 10px 15px 0;
-    width: 25px;
 }
 
 .downvote:hover {
     background-image: url(./images/downvote-hover.svg);
 }
 
-.importance {
-    font-size: 16px;
-}
-
-.quality {
-    display: inline-block;
-}
-
 .complete-btn {
-    position: absolute;
-    right: 10px;
     background-color: #DEE7D3;
     border-radius: 10%; 
+    position: absolute;
+    right: 10px;
 }
-
 
 @media(max-width: 840px){
-    .title-input,
-.body-input {
-    width: 90%;
-}
-
-.save-btn {
-    width: 90%;
-}
-
-.card-prepend{
+.input-format,
+.save-btn,
+.card-prepend {
     width: 90%;
 }
 
