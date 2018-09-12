@@ -2,7 +2,7 @@ $('.card-prepend').on('focusout', editBody);
 $('.card-prepend').on('keyup', editBodyEnter);
 $('.card-prepend').on('focusout', editIdea);
 $('.card-prepend').on('keyup', editIdeaEnter);
-$('.save-btn').on('click', createIdea);
+$('.save-btn').on('click', createToDo);
 $('.search-input').on('keyup', search);
 $('.card-prepend').on('click', delegateClick);
 
@@ -11,7 +11,7 @@ function completeIdea(event) {
     toggleComplete(event);
 }
 
-function createIdea(event) {
+function createToDo(event) {
     event.preventDefault()
     var newIdea = new NewIdea($('.title-input').val(), $('.body-input').val());
     var html = newCard(newIdea.id, newIdea.title, newIdea.body, newIdea.importance);
@@ -26,13 +26,13 @@ function delegateClick() {
     } else if (event.target.classList.contains('downvote')) {
         downvote(event);
     } else if (event.target.classList.contains('delete-button')) {
-        deleteStuff(event);
+        deleteToDo(event);
     } else if (event.target.classList.contains('complete-btn')) {
         completeIdea(event);
     }
 }
 
-function deleteStuff(event) {
+function deleteToDo(event) {
         var cardHTML = $(event.target).closest('.card-container').remove();
         var cardHTMLId = cardHTML[0].id;
         localStorage.removeItem(cardHTMLId);
