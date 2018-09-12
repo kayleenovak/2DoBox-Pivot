@@ -6,18 +6,17 @@ $('.save-btn').on('click', createToDo);
 $('.search-input').on('keyup', search);
 $('.card-prepend').on('click', delegateClick);
 
-function completeIdea(event) {
+function completeToDo(event) {
     event.target.parentNode.parentNode.classList.toggle('card-container-complete');
     toggleComplete(event);
 }
 
 function createToDo(event) {
     event.preventDefault()
-    var newIdea = new NewIdea($('.title-input').val(), $('.body-input').val());
-    var html = newCard(newIdea.id, newIdea.title, newIdea.body, newIdea.importance);
+    var newToDo = new NewToDo($('.title-input').val(), $('.body-input').val());
+    var html = newCard(newToDo.id, newToDo.title, newToDo.body, newToDo.importance);
     $('.card-prepend').prepend(html);
-    localStoreCard(newIdea);
-    toggleCards();
+    localStoreCard(newToDo);
 }
 
 function delegateClick() {
@@ -28,7 +27,7 @@ function delegateClick() {
     } else if (event.target.classList.contains('delete-button')) {
         deleteToDo(event);
     } else if (event.target.classList.contains('complete-btn')) {
-        completeIdea(event);
+        completeToDo(event);
     }
 }
 
@@ -87,9 +86,9 @@ function editIdeaEnter (event) {
   }
 }
 
-function localStoreCard(newIdea) {
-    var id = newIdea.id ;
-    localStorage.setItem(id, JSON.stringify(newIdea));
+function localStoreCard(newToDo) {
+    var id = newToDo.id ;
+    localStorage.setItem(id, JSON.stringify(newToDo));
 }
 
 function newCard(id, title, body, importance){
@@ -108,7 +107,7 @@ function newCard(id, title, body, importance){
           </article>`
 }
 
-function NewIdea(title, body) {
+function NewToDo(title, body) {
     this.title = title;
     this.body = body;
     this.importance = 'Normal';
@@ -136,12 +135,15 @@ function search() {
  });
 }
 
-function toggleCards() {
-  var cardContainer = document.querySelectorAll('.card-container');
-  console.log(cardContainer);
-    $('.card-container').filter(function() {
-      $(this).toggle(indexOf(cardContainer) > 10)
-    })
+function toggleComplete(event) {
+    var id = $(event.target).parent().parent().attr('id');
+    var parsedIdea = JSON.parse(localStorage.getItem(id));
+    if (event.target.parentNode.parentNode.classList.contains('card-container-complete')) {
+        parsedIdea.complete = true;
+    } else  {
+        parsedIdea.complete = false;
+    }
+    localStoreCard(parsedIdea);
 }
 
 function upvote(event) {
@@ -169,15 +171,12 @@ function upvote(event) {
 
 
 
-// function toggleComplete(event) {
-//     var id = $(event.target).parent().parent().attr('id');
-//     var parsedIdea = JSON.parse(localStorage.getItem(id));
-//     if (event.target.parentNode.parentNode.classList.contains('card-container-complete')) {
-//         parsedIdea.complete = true;
-//     } else  {
-//         parsedIdea.complete = false;
-//     }
-//     localStoreCard(parsedIdea);
+// function toggleCards() {
+//   var cardContainer = document.querySelectorAll('.card-container');
+//   console.log(cardContainer);
+//     $('.card-container').filter(function() {
+//       $(this).toggle(indexOf(cardContainer) > 10)
+//     })
 // }
 
 

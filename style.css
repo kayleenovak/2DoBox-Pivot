@@ -18,7 +18,7 @@ body {
 }
 
 .to-do-heading {
-    color: #818C74;
+    color: #698473;
     font-family: 'roboto slab', sans-serif;
     font-size: 275%;
     margin-bottom: 20px;
@@ -50,7 +50,7 @@ body {
 }
 
 .save-btn {
-    background-color: #818C74;
+    background-color: #698473;
     border: none;
     color: #fff;
     font-size: 19px;
@@ -109,8 +109,9 @@ body {
 }
 
 .card-container-complete {
-    background: grey;
-    color: lightgrey;
+    background: #FBF9EC;
+    color: darkgrey;
+    border: 3px solid #FBF9EC;
 }
 
 
