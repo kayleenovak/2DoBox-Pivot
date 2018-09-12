@@ -18,10 +18,10 @@ body {
 
 h1 {
     color: #610f7f;
+    font-family: 'roboto slab', sans-serif;
     font-size: 275%;
     margin-bottom: 20px;
     padding-top: 20px;
-    font-family: 'roboto slab', sans-serif;
 }
 
 .second-word {
@@ -37,9 +37,9 @@ h1 {
 }
 
 form {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 input {
@@ -50,10 +50,10 @@ input {
 .title-input,
 .body-input {
     height: 30px;
-    width: 45%;
     margin-bottom: 10px;
     max-width: 540px;
     padding: 5px;
+    width: 45%;
 }
 
 }
@@ -73,8 +73,8 @@ button {
     color: #fff;
     font-size: 120%;
     height: 30px;
-    width: 45%;
     max-width: 540px;
+    width: 45%;
 }
 
 .save-btn:hover {
@@ -82,27 +82,27 @@ button {
 }
 
 .card-section {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .search-input {
     height: 30px;
     margin: 20px 0 10px 0;
-    width: 45%;
     max-width: 540px;
     padding: 5px;
+    width: 45%;
 }
 
 .card-prepend{
-    width: 45%;
     max-width: 540px;
+    width: 45%;
 }
 
 .card-container {
-    margin-top: 20px;
     border-bottom: 1px solid #D1D3D4;
+    margin-top: 20px;
 }
 
 .card-container-complete {
@@ -111,9 +111,9 @@ button {
 }
 
 .card-heading {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .title-of-card{
@@ -148,8 +148,8 @@ p {
 }
 
 .idea-body {
-    display: flex;
     align-items: center;
+    display: flex;
     position: relative;
 }
 .upvote {
@@ -185,15 +185,15 @@ p {
 }
 
 .complete-btn {
-    position: absolute;
-    right: 10px;
     background-color: #DEE7D3;
     border-radius: 10%; 
+    position: absolute;
+    right: 10px;
 }
 
 
 @media(max-width: 840px){
-    .title-input,
+.title-input,
 .body-input {
     width: 90%;
 }
