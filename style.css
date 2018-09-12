@@ -25,11 +25,11 @@ h1 {
 }
 
 .second-word {
-    color: darkgrey;
+    color: #b7b7b7;
 }
 
 .idea {
-    color: #818C74;
+    color: #698473;
 }
 
 .input-section {
@@ -68,7 +68,7 @@ button {
 }
 
 .save-btn {
-    background-color: #818C74;
+    background-color: #698473;
     border: none;
     color: #fff;
     font-size: 120%;
@@ -106,8 +106,9 @@ button {
 }
 
 .card-container-complete {
-    background: grey;
-    color: lightgrey;
+    background-color: #fbf9ec;
+    border: #fbf9ec solid 3px;
+    color: darkgrey;
 }
 
 .card-heading {
