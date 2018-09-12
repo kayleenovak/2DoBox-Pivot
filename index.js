@@ -1,21 +1,9 @@
 $('.card-prepend').on('focusout', editBody);
-$('.card-prepend').on('keyup', function (event) {
-  if (event.keyCode == 13) {
-    event.preventDefault();
-    editBody(event);
-    $('.body-of-card').trigger('blur');
-  }
-});
+$('.card-prepend').on('keyup', editBodyEnter);
 $('.card-prepend').on('focusout', editIdea);
-$('.card-prepend').on('keyup', function (event) {
-  if (event.keyCode == 13) {
-    event.preventDefault();
-    editIdea(event);
-    $('.idea-of-card').trigger('blur');
-  }
-});
+$('.card-prepend').on('keyup', editIdeaEnter);
 $('.save-btn').on('click', createIdea);
-$('.search-input').on('keyup', search)
+$('.search-input').on('keyup', search);
 $('.card-prepend').on('click', delegateClick);
 
 function newCard(id, title, body, importance){
@@ -33,6 +21,22 @@ function newCard(id, title, body, importance){
             </div>
           </article>`
 }
+
+function editBodyEnter (event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+    editBody(event);
+    $('.body-of-card').trigger('blur');
+  }
+};
+
+function editIdeaEnter (event) {
+  if (event.keyCode == 13) {
+    event.preventDefault();
+    editBody(event);
+    $('.body-of-card').trigger('blur');
+  }
+};
 
 function NewIdea(title, body) {
     this.title = title;
