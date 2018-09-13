@@ -1,10 +1,20 @@
-$('.card-prepend').on('focusout', editBody);
-$('.card-prepend').on('keyup', editBodyEnter);
-$('.card-prepend').on('focusout', editIdea);
-$('.card-prepend').on('keyup', editIdeaEnter);
-$('.save-btn').on('click', createToDo);
-$('.search-input').on('keyup', search);
 $('.card-prepend').on('click', delegateClick);
+$('.card-prepend').on('focusout', editBody);
+$('.card-prepend').on('focusout', editToDo);
+$('.card-prepend').on('keydown', editToDoEnter);
+$('.card-prepend').on('keyup', editBodyEnter);
+$('.body-input').on('keyup', enableSaveBtn);
+$('.save-btn').on('click', createToDo);
+$('.search-input').on('keydown', search);
+$('.title-input').on('keyup', enableSaveBtn);
+
+onLoad();
+
+function clearInputs() {
+  $('.title-input').val('');
+  $('.body-input').val('');
+  $('.save-btn').prop('disabled', true);
+}
 
 function completeToDo(event) {
     event.target.parentNode.parentNode.classList.toggle('card-container-complete');
@@ -17,6 +27,7 @@ function createToDo(event) {
     var html = newCard(newToDo.id, newToDo.title, newToDo.body, newToDo.importance);
     $('.card-prepend').prepend(html);
     localStoreCard(newToDo);
+    clearInputs();
 }
 
 function delegateClick() {
@@ -67,7 +78,7 @@ function editBodyEnter (event) {
   }
 }
 
-function editIdea(event) {
+function editToDo(event) {
   event.preventDefault();
   if ($(event.target).hasClass('title-of-card')) {
     var id = $(event.target).parent().parent().attr('id');
@@ -78,11 +89,19 @@ function editIdea(event) {
   }
 }
 
-function editIdeaEnter (event) {
+function editToDoEnter (event) {
   if (event.keyCode == 13) {
     event.preventDefault();
     editBody(event);
-    $('.body-of-card').trigger('blur');
+    $('.title-of-card').trigger('blur');
+  }
+}
+
+function enableSaveBtn() {
+  if ($('.title-input').val() === '' || $('.body-input').val() === '') {
+    $('.save-btn').prop('disabled', true);
+  } else {
+    $('.save-btn').prop('disabled', false);
   }
 }
 
@@ -131,7 +150,6 @@ function search() {
  var searchValue = $(this).val().toLowerCase();
  $(".card-container").filter(function() {
    $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1)
- console.log(this);
  });
 }
 
