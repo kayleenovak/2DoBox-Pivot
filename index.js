@@ -146,12 +146,6 @@ function onLoad() {
   }
 }
 
-function saveToDo() {
-  if ($('.title-input') === '' || $('.body-input') === '') {
-    $
-  }
-}
-
 function search() {
  var searchValue = $(this).val().toLowerCase();
  $(".card-container").filter(function() {
